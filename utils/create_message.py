@@ -1,4 +1,4 @@
-from pyrogram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def amazon_message(product, update):
 
