@@ -45,7 +45,6 @@ Version 1.0.1
 
 - [python-amazon-paapi](https://github.com/sergioteula/python-amazon-paapi)
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
-- [pyrogram](https://github.com/pyrogram/pyrogram)
 
 ## License
 
