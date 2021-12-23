@@ -1,8 +1,6 @@
 <!---------------------------
 README.MD
 AmazonBot-1.1.0
-
-Created by LightYagami28 on 20/12/21.
 ---------------------------->
 
 # AmazonBot
@@ -11,7 +9,7 @@ Created by LightYagami28 on 20/12/21.
 
 ### Prerequisites
 
-- You need Python 3.6 or higher
+- You need Python 3.0 or higher
 
 ```
 pip3 install requirements.txt
@@ -41,14 +39,14 @@ Now customizing is more easy, you can go to `utils/create_message.py` and edit t
 ```
 Version 1.0.1
   - Initial Release
-  - Adjustment of the code
 ```
 
 ## Built With
 
 - [python-amazon-paapi](https://github.com/sergioteula/python-amazon-paapi)
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
+- [pyrogram](https://github.com/pyrogram/pyrogram)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LICENSE.md) file for details

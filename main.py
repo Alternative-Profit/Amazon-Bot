@@ -1,9 +1,9 @@
 import logging
-import pyrogram
+import pyrogram 
 import json # for config
 import requests
 from pyrogram import Update
-from pyrogram import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from pyrogram import Updater, CommandHandler, MessageHandler, Filters
 # Amazon Stuff
 from amazon.tools import get_asin # Get asin from url
 from utils.create_message import amazon_message # Create HTML template for amazon

@@ -1,0 +1,4 @@
+__pycache__/
+config/credentials.json
+.ds_store
+config/credentials.json
