@@ -1,4 +1,3 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def amazon_message(product, update):
 

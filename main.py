@@ -1,12 +1,9 @@
 import logging
 import json # for config
 import requests
-from telegram import update
-from telegram.ext import Updater
-from telegram.ext import CallbackContext
-from telegram.ext import CommandHandler
-from telegram.ext import CallbackContext
-from telegram.ext import Filters
+import telethon
+from telethon.sync import TelegramClient
+from amazon_paapi import AmazonApi
 # Amazon Stuff
 from amazon.tools import get_asin # Get asin from url
 from utils.create_message import amazon_message # Create HTML template for amazon
