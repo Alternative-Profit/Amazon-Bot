@@ -11,16 +11,16 @@ def amazon_message(product, update):
         price = f"{product.get_price().price.value}"
 
     else:
-        price = "Not available"
+        price = "Non "
 
     message = f"""<a href='{product.get_image()}'>​​​​​​​​​​</a>
 📌{product.get_title()}
 
-💰Price: {price}
+💰Prezzo: {price}
 
 🔗Link: <a href=\"{product.return_url()}\">Click Here</a>
 
-🗣 Post by: {first_name}
+🗣 Postato da: {first_name}
 """
 
     buttons = InlineKeyboardMarkup([[InlineKeyboardButton(text='🛒AMAZON🛒', url=product.return_url())]])
