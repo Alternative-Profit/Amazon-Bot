@@ -30,7 +30,7 @@ python3 main.py
 screen -r  python3 main.py
 ```
 
-### Customizing the message ✏️
+### Customizing the message 😉
 
 Now customizing is more easy, you can go to `utils/create_message.py` and edit the variable `message` to put in whatever you want
 
