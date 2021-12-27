@@ -18,7 +18,7 @@ token = config["BOT-TOKEN"]
 bot = TelegramClient("bot", api_id, api_hash).start(bot_token=token)
 @bot.on(events.NewMessage())
 def start(message):
-    message.reply_text('Send me links from Amazon! I will give you back a nice post.')
+    await message.reply_text('Send me links from Amazon! I will give you back a nice post.')
     amazon_valid_urls = ['www.amzn.to', 'amzn.to',
                          'www.amazon.', 'amazon.']
 
