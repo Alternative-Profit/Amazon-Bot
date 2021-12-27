@@ -3,3 +3,4 @@ config/credentials.json
 .ds_store
 config/credentials.json
 bot.session
+bot.session-journal
