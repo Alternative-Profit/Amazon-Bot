@@ -1,8 +1,7 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telethon import Button
 
-def amazon_message(product, update):
 
-    first_name = update.message.from_user['first_name']
+def amazon_message(product, name):
 
     if product.get_price().pvp.value != None:
         price = f"❌{product.get_price().pvp.value} ✅{product.get_price().price.value}"
@@ -11,18 +10,17 @@ def amazon_message(product, update):
         price = f"{product.get_price().price.value}"
 
     else:
-        price = "Not available"
+        price = "Non "
 
     message = f"""<a href='{product.get_image()}'>​​​​​​​​​​</a>
 📌{product.get_title()}
 
-💰Price: {price}
+💰Prezzo: {price}
 
 🔗Link: <a href=\"{product.return_url()}\">Click Here</a>
 
-🗣 Post by: {first_name}
+🗣 Postato da: {name}
 """
+    buttons = [[Button.url('🛒AMAZON🛒', product.return_url())]]
 
-    buttons = InlineKeyboardMarkup([[InlineKeyboardButton(text='🛒AMAZON🛒', url=product.return_url())]])
-
-    return [message, buttons]
+    return {"message":message, "buttons":buttons}

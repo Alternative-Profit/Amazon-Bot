@@ -1,40 +1,28 @@
-import logging
-import json # for config
+from json import load # for config
+
 import requests
-from telegram import update
-from telegram.ext import Updater
-from telegram.ext import CallbackContext
-from telegram.ext import CommandHandler
-from telegram.ext import CallbackContext
-from telegram.ext import Filters
+from amazon.paapi import AmazonApi
 # Amazon Stuff
-from amazon.tools import get_asin # Get asin from url
 from utils.create_message import amazon_message # Create HTML template for amazon
 from utils.product_amazon import Product
-from utils.tools import  check_domain
+from utils.tools import *
+from telethon import TelegramClient, events
 
 with open('config/credentials.json') as config_file:
-    config = json.load(config_file)
+    config = load(config_file)
+api_id = config["api_id"]
+api_hash = config["api_hash"]
+token = config["BOT-TOKEN"]
 
-# Enable logging
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
-)
-
-logger = logging.getLogger(__name__)
-
-
-def start(update, context):
-    update.message.reply_text('Send me links from Amazon! I will give you back a nice post.')
-
-
-def message_url(update, context):
-
+bot = TelegramClient("bot", api_id, api_hash).start(bot_token=token)
+@bot.on(events.NewMessage())
+def start(message):
+    message.reply_text('Send me links from Amazon! I will give you back a nice post.')
     amazon_valid_urls = ['www.amzn.to', 'amzn.to',
                          'www.amazon.', 'amazon.']
 
-    url = update.message.text
-    domain = check_domain(update.message.text)
+    url = message.text
+    domain = check_domain(message.text)
 
     if domain.startswith(tuple(amazon_valid_urls)):
 
@@ -42,22 +30,12 @@ def message_url(update, context):
             url = requests.get(url).url
 
         product = Product(get_asin(url))
-        message = amazon_message(product, update)
-        context.bot.send_message(update.message.chat_id, message[0] , reply_markup=message[1], parse_mode='HTML')
-        context.bot.delete_message(update.message.chat_id, update.message.message_id)
+        message = amazon_message(product, message.first_name)
+        await bot.send_message(message.chat_id, message["message"] , buttons= message["buttons"], parse_mode='HTML')
+        await message.delete(message.chat_id, message.message_id)
 
 
-def main():
-    updater = Updater(config['BOT-TOKEN'], use_context=True)
-
-    dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
-
-    dispatcher.add_handler(MessageHandler(Filters.regex('(?i)((?:https?://|www\d{0,3}[.])?[a-z0-9.\-]+[.](?:(?:com.br/)|(?:ca/)|(?:com.mx/)|(?:com/)|(?:cn/)|(?:in/)|(?:co.jp/)|(?:sg/)|(?:com.tr/)|(?:ae/)|(?:sa/)|(?:fr/)|(?:de/)|(?:it/)|(?:nl/)|(?:pl/)|(?:es/)|(?:se/)|(?:co.uk/)|(?:com.au/))(?:/[^\s()<>]+[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019])?)'), message_url))
-
-    updater.start_polling()
-    updater.idle()
 
 if __name__ == '__main__':
-    main()
+    print("Bot status[online]")
+    bot.run_until_disconnected()

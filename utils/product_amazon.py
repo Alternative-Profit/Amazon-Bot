@@ -1,18 +1,16 @@
 
-import json
+from json import load
 from amazon.paapi import AmazonAPI
 
 from .tools import check_domain # To return url with asin
 
 with open('config/credentials.json') as config_file:
-    config = json.load(config_file)
+    config = load(config_file)
 
 amz_config = config['amazon']
 amazon = AmazonAPI(amz_config['KEY'], amz_config['SECRET'], amz_config['TAG'], amz_config['COUNTRY'])
-
-
 class Product():
-
+    global amz_config, amazon
     def __init__(self, asin):
         self.asin = asin
         self.product = amazon.get_product(asin)
