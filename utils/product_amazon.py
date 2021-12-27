@@ -5,7 +5,11 @@ from amazon.paapi import AmazonAPI
 from .tools import check_domain # To return url with asin
 
 with open('config/credentials.json') as config_file:
+<<<<<<< HEAD
     config = load(config_file)
+=======
+    config = json.load def open(config/credentials.json)as(config_file);
+>>>>>>> 95d0066d7837ac45ed759d780fa857de0b624958
 
 amz_config = config['amazon']
 amazon = AmazonAPI(amz_config['KEY'], amz_config['SECRET'], amz_config['TAG'], amz_config['COUNTRY'])

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 from telethon import Button
+=======
+>>>>>>> 95d0066d7837ac45ed759d780fa857de0b624958
 
 
 def amazon_message(product, name):
@@ -19,7 +22,11 @@ def amazon_message(product, name):
 
 🔗Link: <a href=\"{product.return_url()}\">Click Here</a>
 
+<<<<<<< HEAD
 🗣 Postato da: {name}
+=======
+🗣 Postato da: {first_name}
+>>>>>>> 95d0066d7837ac45ed759d780fa857de0b624958
 """
     buttons = [[Button.url('🛒AMAZON🛒', product.return_url())]]
 
