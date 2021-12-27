@@ -1,4 +1,4 @@
 import re
 
 def check_domain(url):
-    return re.search('(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9][/]', url).group(0)
+    return re.search('https://www.amazon.it/dp/B00GC3BBMU/ref=s9_dc', url).group(0)
