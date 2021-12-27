@@ -10,7 +10,7 @@ def amazon_message(product, name):
         price = f"{product.get_price().price.value}"
 
     else:
-        price = "Non "
+        price = "Non disponibile "
 
     message = f"""<a href='{product.get_image()}'>​​​​​​​​​​</a>
 📌{product.get_title()}

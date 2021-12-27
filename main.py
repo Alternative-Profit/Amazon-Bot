@@ -1,12 +1,13 @@
 from json import load # for config
-
+import asyncio
 import requests
-from amazon.paapi import AmazonApi
+from amazon_paapi import AmazonApi
 # Amazon Stuff
 from utils.create_message import amazon_message # Create HTML template for amazon
 from utils.product_amazon import Product
 from utils.tools import *
 from telethon import TelegramClient, events
+
 
 with open('config/credentials.json') as config_file:
     config = load(config_file)
@@ -31,9 +32,9 @@ def start(message):
 
         product = Product(get_asin(url))
         message = amazon_message(product, message.first_name)
-        await bot.send_message(message.chat_id, message["message"] , buttons= message["buttons"], parse_mode='HTML')
-        await message.delete(message.chat_id, message.message_id)
-
+async def start():
+    await bot.send_message(message.chat_id, message["message"] , buttons= message["buttons"], parse_mode='HTML')
+    await message.delete(message.chat_id, message.message_id)
 
 
 if __name__ == '__main__':
