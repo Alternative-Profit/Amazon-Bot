@@ -1,13 +1,7 @@
 from json import load # for config
 
 import requests
-<<<<<<< HEAD
 from amazon.paapi import AmazonApi
-=======
-import telethon
-from telethon.sync import TelegramClient
-from amazon_paapi import AmazonApi
->>>>>>> 95d0066d7837ac45ed759d780fa857de0b624958
 # Amazon Stuff
 from utils.create_message import amazon_message # Create HTML template for amazon
 from utils.product_amazon import Product
