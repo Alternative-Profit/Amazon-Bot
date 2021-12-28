@@ -37,6 +37,8 @@ Now customizing is more easy, you can go to `utils/create_message.py` and edit t
 ### Changelog
 
 ```
+Version 1.0.3
+  -Definitive Edition
 Version 1.0.2
   -Rewrite the code in Telethon
 Version 1.0.1
