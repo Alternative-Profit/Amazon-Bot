@@ -29,7 +29,7 @@ async def start(message):
             url = requests.get(url).url
 
         product = Product(get_asin(url))
-        message = amazon_message(product, message.first_name)
+        message = amazon_message(product, message.sender.first_name)
         await bot.send_message(message.chat_id, message["message"], buttons=message["buttons"], parse_mode='HTML')
         await message.delete(message.chat_id, message.message_id)
 
